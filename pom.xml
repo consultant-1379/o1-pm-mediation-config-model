@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+	<parent>
+         <groupId>com.ericsson.oss.pmic</groupId>
+         <artifactId>pmic-integration</artifactId>
+         <version>1.74.8</version>
+     </parent>
+    <groupId>com.ericsson.oss.mediation.pm.models.configurations</groupId>
+    <artifactId>o1-pm-mediation-config-model</artifactId>
+    <version>1.1.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>[${project.artifactId}] Model Project</name>
+    <description>This is a template service model project</description>
+    <modules>
+        <module>o1-pm-mediation-config-model-jar</module>
+        <module>ERICo1pmmediationconfigmodel_CXP9043317</module>
+    </modules>
+    <properties>
+        <!-- Always use the latest stable Modeling BOM -->
+        <version.modeling-bom>21.8.10</version.modeling-bom>
+        <!-- Versions for plugins must be explicitly defined. The versions of Annotation
+            Processor, Model Processing and Model Deployment Tool should always be the
+            same as the managed versions from the Modeling BOM -->
+        <version.annotation-processor.plugin>3.43.2</version.annotation-processor.plugin>
+        <version.model-processing.plugin>1.54.2</version.model-processing.plugin>
+        <version.mdt.plugin>9.27.2</version.mdt.plugin>
+        <ericsson.scm.url>scm:git:[fetch=]ssh://gerritmirror-ha.lmera.ericsson.se:29418/OSS/ENM-Parent/SQ-Gate/com.ericsson.oss.mediation.pm.models.configurations/o1-pm-mediation-config-model[push=]ssh://gerrit.ericsson.se:29418/OSS/ENM-Parent/SQ-Gate/com.ericsson.oss.mediation.pm.models.configurations/o1-pm-mediation-config-model</ericsson.scm.url>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.ericsson.oss.itpf.modeling</groupId>
+                <artifactId>Modeling-BOM</artifactId>
+                <version>${version.modeling-bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+     <!--Profiles for site documentation -->
+ 
+   <!--Profile to deploy latest site -->
+    <profiles>
+        <profile>
+            <id>site_latest</id>
+            <distributionManagement>
+                <site>
+                    <id>site</id>
+                    <name>Site</name>
+                    <url>${site.url}/o1-pm-mediation-config-model/latest</url>
+                </site>
+            </distributionManagement>
+        </profile>
+ 
+     <!--Profile to stage site for review -->
+
+        <profile>
+            <id>site_review</id>
+            <distributionManagement>
+                <site>
+                    <id>site</id>
+                    <name>Site</name>
+                    <url>${site.url}</url>
+                </site>
+            </distributionManagement>
+        </profile>
+    </profiles>
+   <!--Deployment of versioned documentation -->
+    <distributionManagement>
+        <site>
+            <id>site</id>
+            <name>Site</name>
+            <url>${site.url}/o1-pm-mediation-config-model/latest/${project.version}</url>
+        </site>
+    </distributionManagement>
+    <scm>
+        <developerConnection>${ericsson.scm.url}</developerConnection>
+        <connection>${ericsson.scm.url}</connection>
+        <tag>HEAD</tag>
+    </scm>
+</project>

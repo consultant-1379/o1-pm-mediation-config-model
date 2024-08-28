@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *******************************************************************************
+  * COPYRIGHT Ericsson LMI 2023. All rights reserved. * * No part of this document
+  may be reproduced in any form without the * written permission of the copyright
+  owner.The contents of this document * are subject to revision without notice
+  due to continued progress in * methodology, design and manufacturing. Ericsson
+  shall have no liability * for any error or damage of any kind resulting from
+  the use of this document. * ******************************************************************************* -->
+
+<med_configuration:MediationConfigurationDefinition
+        oss_common:lifeCycle="CURRENT" oss_common:name="O1NodePmMediationConfigurationModel"
+        oss_common:ns="O1Node" oss_common:version="1.0.0"
+        xmlns:med_configuration="urn:com:ericsson:schema:xml:oss:med_configuration"
+        xmlns:oss_common="urn:com:ericsson:schema:xml:oss:oss_common"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <oss_common:modelCreationInfo author="TeamAmerica"
+                                  creationDate="Mon May 8 11:00:07 IST 2023">
+        <oss_common:designedModel componentId="o1-pm-mediation-config-model-jar"/>
+    </oss_common:modelCreationInfo>
+
+    <oss_common:desc>
+        Mediation configuration for O1Node Performance Management
+    </oss_common:desc>
+
+<!--     Subscription Activation -->
+    <med_configuration:flowInvocation flowUrn="//CNF_MED/SharedCnfPmActivationFlow/1.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/SubscriptionActivationTaskRequest/1.0.0" />
+    </med_configuration:flowInvocation>
+
+<!--     Subscription Deactivation -->
+    <med_configuration:flowInvocation flowUrn="//CNF_MED/SharedCnfPmDeactivationFlow/1.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/SubscriptionDeactivationTaskRequest/1.0.0" />
+    </med_configuration:flowInvocation>
+
+<!--     File Collection -->
+    <med_configuration:flowInvocation flowUrn="//CNF_MED/SharedCnfPmFileCollectionFlow/2.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/FileCollectionTaskRequest/1.0.0" />
+    </med_configuration:flowInvocation>
+
+<!--     PM Flow Scheduler Controller Flow -->
+    <med_configuration:flowInvocation flowUrn="//SHARED_PM_MED/PmSchedulerControllerFlowMSPM/3.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/PmConfigTaskRequest/1.0.0"/>
+    </med_configuration:flowInvocation>
+
+<!--     Scanner Polling Flow -->
+    <med_configuration:flowInvocation flowUrn="//CNF_MED/SharedCnfPmMonitoringPollingFlow/1.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/ScannerPollingTaskRequest/1.0.0"/>
+    </med_configuration:flowInvocation>
+
+<!--     Scanner Resumption -->
+    <med_configuration:flowInvocation flowUrn="//CNF_MED/SharedCnfPmScannerResumptionFlow/1.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/ScannerResumptionTaskRequest/1.0.0"/>
+    </med_configuration:flowInvocation>
+
+<!--     Scanner Suspension -->
+    <med_configuration:flowInvocation flowUrn="//CNF_MED/SharedCnfPmScannerSuspensionFlow/1.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/ScannerSuspensionTaskRequest/1.0.0"/>
+    </med_configuration:flowInvocation>
+
+<!--     Scanner Deletion -->
+    <med_configuration:flowInvocation flowUrn="//SHARED_PM_MED/PmScannerDeletionFlowMSPM/2.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/ScannerDeletionTaskRequest/1.0.0"/>
+    </med_configuration:flowInvocation>
+
+<!--     PmFunction MO Update Flow -->
+    <med_configuration:flowInvocation flowUrn="//SHARED_PM_MED/PmFunctionSupervisionForPullBasedNodesFlow/1.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/PmFunctionUpdateTaskRequest/1.0.0"/>
+    </med_configuration:flowInvocation>
+
+<!--     File Recovery Flow -->
+    <med_configuration:flowInvocation flowUrn="//CNF_MED/SharedCnfPmFileRecoveryFlow/2.0.0">
+        <med_configuration:eventBasedInvocation eventTypeUrn="//global/FileCollectionDeltaRecoveryTaskRequest/1.0.0" />
+    </med_configuration:flowInvocation>
+
+</med_configuration:MediationConfigurationDefinition>
